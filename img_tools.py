@@ -29,10 +29,5 @@ def filter_out_RB(src):
     res_red = cv2.bitwise_and(hsv, hsv, mask = mask_red)
 
 
-    cv2.imshow("res_red_filter", res_red)
-    cv2.imshow("res_blue_filter", res_blue)
-    cv2.imshow("src", src)
-    cv2.waitKey()
-
-    return res_red, res_blue
+    return cv2.cvtColor(res_red, cv2.COLOR_RGB2GRAY), cv2.cvtColor(res_blue, cv2.COLOR_RGB2GRAY)
 
