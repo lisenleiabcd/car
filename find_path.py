@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+#####################################################
+#
+# bfs寻路模块
+#
+####################################################
 import queue
 import numpy as np
 
-bias = ((1, 0), (0, 1), (-1, 0), (0, -1))
+bias = ((-1, 0), (0, -1), (0, 1), (1, 0))
 
 def bfs(map, mapSize, desIJ, startIJ):
     routine = np.empty((mapSize, mapSize), dtype=tuple)
@@ -13,7 +18,6 @@ def bfs(map, mapSize, desIJ, startIJ):
     routine[startIJ[0]][startIJ[1]] = (-1, -1)
 
     while (not que.empty()):
-        print("INFINITE LOOP1")
         tmp = que.get_nowait()
         if (tmp[0] == desIJ[0] and tmp[1] == desIJ[1]):
             break
@@ -29,7 +33,6 @@ def bfs(map, mapSize, desIJ, startIJ):
     tmp = desIJ
     routine_ret = np.empty((mapSize, mapSize), dtype=tuple)
     while (tmp != startIJ):
-        print("INFINITE LOOP2")
         father = routine[tmp[0]][tmp[1]]
         routine_ret[father[0]][father[1]] = tmp
         tmp = father
